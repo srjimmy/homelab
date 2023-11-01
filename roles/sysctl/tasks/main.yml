@@ -1,0 +1,7 @@
+- name: sysctl disable ipv6
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: true
+  loop: "{{ ipv6params }}"
