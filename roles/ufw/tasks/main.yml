@@ -1,0 +1,32 @@
+- name: apt install ufw
+  apt:
+    name:
+      - ufw
+    state: latest
+
+- name: ufw disable ipv6
+  copy:
+    src: ufw
+    dest: /etc/default/ufw
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: ufw default allow outgoing
+  ufw:
+    default: deny
+    direction: incoming
+
+- name: ufw default allow outgoing
+  ufw:
+    default: allow
+    direction: outgoing
+
+- name: ufw allow ssh
+  ufw:
+    rule: allow
+    port: ssh
+
+- name: ufw enable
+  ufw:
+    state: enabled
