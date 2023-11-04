@@ -1,0 +1,6 @@
+ufw_config_src: ufw
+ufw_config_dest: /etc/default/ufw
+ufw_default_incoming: deny
+ufw_default_outgoing: allow
+ufw_rules:
+  - { rule: allow, port: ssh }

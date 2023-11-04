@@ -4,29 +4,32 @@
       - ufw
     state: latest
 
-- name: ufw disable ipv6
+- name: ufw config
   copy:
-    src: ufw
-    dest: /etc/default/ufw
+    src: "{{ ufw_config_src }}"
+    dest: "{{ ufw_config_dest }}"
     owner: root
     group: root
     mode: "0644"
 
 - name: ufw default allow outgoing
   ufw:
-    default: deny
+    default: "{{ ufw_default_incoming }}"
     direction: incoming
 
 - name: ufw default allow outgoing
   ufw:
-    default: allow
+    default: "{{ ufw_default_outgoing }}"
     direction: outgoing
 
-- name: ufw allow ssh
+- name: ufw rules
   ufw:
-    rule: allow
-    port: ssh
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+  loop: "{{ ufw_rules }}"
 
 - name: ufw enable
   ufw:
     state: enabled
+  notify:
+    - restart ufw
