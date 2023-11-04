@@ -1,0 +1,28 @@
+- name: apt install logwatch
+  apt:
+    name:
+      - logwatch
+    state: latest
+
+- name: mkdir logwatch temporary directory
+  file:
+    path: "{{ logwatch_tmp_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: logwatch config
+  template:
+    src: "{{ logwatch_config_src }}"
+    dest: "{{ logwatch_config_dest }}"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: logwatch cron
+  cron:
+    name: logwatch
+    minute: 0
+    hour: 8
+    job: "/sbin/logwatch"

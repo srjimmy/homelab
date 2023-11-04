@@ -6,3 +6,5 @@
     - sshd
     - sysctl
     - ufw
+    - postfix
+    - logwatch
