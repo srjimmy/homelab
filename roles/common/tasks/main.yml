@@ -11,5 +11,8 @@
     name:
       - neovim
       - btop
-      - qemu-guest-agent
+      - lnav
+      - ranger
+      - gdu
+      # - qemu-guest-agent
     state: latest
