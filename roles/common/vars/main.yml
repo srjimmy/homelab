@@ -1,0 +1,7 @@
+apt_packages:
+  - neovim
+  - btop
+  - lnav
+  - ncdu
+  - ranger
+  - qemu-guest-agent

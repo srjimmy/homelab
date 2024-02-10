@@ -1,15 +1,17 @@
-- name: apt update cache
-  apt:
+- name: update apt cache
+  ansible.builtin.apt:
     update_cache: true
 
-- name: apt upgrade packages
-  apt:
+- name: upgrade apt packages
+  ansible.builtin.apt:
     upgrade: true
 
-- name: apt install sysadmin packages
-  apt:
-    name:
-      - neovim
-      - btop
-      - qemu-guest-agent
+- name: install apt packages
+  ansible.builtin.apt:
+    name: "{{ apt_packages }}"
     state: latest
+
+- name: prohibit direct root login
+  ansible.builtin.user:
+    name: root
+    shell: /usr/sbin/nologin
