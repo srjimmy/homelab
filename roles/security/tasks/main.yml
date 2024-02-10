@@ -1,4 +1,0 @@
-- name: prohibit direct root login
-  user:
-    name: root
-    shell: /bin/nologin
