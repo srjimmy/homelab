@@ -1,6 +1,6 @@
-ufw_config_src: ufw
-ufw_config_dest: /etc/default/ufw
+ufw_config: /etc/default/ufw
+ufw_disable_ipv6: true
 ufw_default_incoming: deny
 ufw_default_outgoing: allow
 ufw_rules:
-  - { rule: allow, port: ssh }
+  - { rule: allow, port: "22", proto: tcp, comment: ssh }
