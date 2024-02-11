@@ -1,7 +1,7 @@
 - name: sysctl disable ipv6
-  sysctl:
+  ansible.posix.sysctl:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     state: present
     reload: true
-  loop: "{{ net_ipv6_confs }}"
+  loop: "{{ net_ipv6_conf }}"
