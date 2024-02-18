@@ -2,9 +2,6 @@
   become: true
   roles:
     - common
-    - security
     - sshd
     - sysctl
     - ufw
-    - postfix
-    - logwatch
